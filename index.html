@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gigglers Academy - Fun Learning for Kids</title>
+    <meta name="description" content="Welcome to Gigglers Academy! Where learning meets fun with educational and entertaining videos for kids.">
+    
+    <!-- Razorpay SDK -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #22A88D;
+            --secondary-color: #86BF3E;
+            --accent-color: #3CB5E0;
+            --light-bg: #F0F9F7;
+            --dark-text: #2C3E50;
+            --light-text: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            overflow-x: hidden;
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Header Styles */
+        header {
+            background: #ffffff;
+            color: var(--dark-text);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--dark-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(34, 168, 141, 0.9) 0%, rgba(60, 181, 224, 0.9) 100%),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%2386BF3E" width="1200" height="600"/><g fill="%23ffffff" opacity="0.1"><circle cx="100" cy="100" r="80"/><circle cx="300" cy="200" r="60"/><circle cx="500" cy="150" r="90"/><circle cx="700" cy="250" r="70"/><circle cx="900" cy="100" r="85"/><circle cx="1100" cy="200" r="75"/></g></svg>');
+            background-size: cover;
+            background-position: center;
+            padding: 150px 2rem 100px;
+            text-align: center;
+            color: var(--light-text);
+            margin-top: 60px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            margin: 10px;
+            background: var(--secondary-color);
+            color: var(--light-text);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .btn-primary {
+            background: var(--secondary-color);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--light-text);
+        }
+
+        .btn-coffee {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FFD93D 100%);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--light-bg);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .about-text h3 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .stat-label {
+            color: var(--dark-text);
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Features Section */
+        .features {
+            background: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+
+        .feature-card:hover {
+            border-color: var(--primary-color);
+            transform: scale(1.05);
+        }
+
+        .feature-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Support Section */
+        .support {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            color: var(--light-text);
+            text-align: center;
+        }
+
+        .support-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .coffee-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            animation: rotate 4s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: #2C3E50;
+            color: var(--light-text);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .social-links {
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: var(--light-text);
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+            transform: scale(1.2);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-color);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                right: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: var(--primary-color);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                padding: 2rem 0;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            }
+
+            .nav-links a {
+                color: var(--light-text);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Loading Animation */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="logo.png" alt="Gigglers Academy Logo">
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Content</a></li>
+                <li><a href="#support">Support Us</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Welcome to Gigglers Academy! 🎉</h1>
+            <p>Where Learning Meets Fun! Educational & Entertaining Videos for Kids</p>
+            <a href="https://www.youtube.com/@GigglersAcademy" target="_blank" class="btn btn-primary">🎬 Visit Our Channel</a>
+            <a href="#about" class="btn btn-secondary">Learn More</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">About Gigglers Academy</h2>
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <h3>Making Learning Fun for Every Child! 🌟</h3>
+                    <p>
+                        Gigglers Academy is your child's favorite destination for educational entertainment! 
+                        We create engaging, colorful, and fun videos that make learning an adventure.
+                    </p>
+                    <p>
+                        From alphabet songs to number counting, science experiments to creative storytelling, 
+                        our content is designed to spark curiosity and foster a love for learning in young minds.
+                    </p>
+                    <p>
+                        Join our growing community of happy learners and subscribe today for new videos every week!
+                    </p>
+                    <a href="https://www.youtube.com/@GigglersAcademy?sub_confirmation=1" target="_blank" class="btn btn-primary">Subscribe Now! 🔔</a>
+                </div>
+                <div class="stats fade-in">
+                    <div class="stat-card">
+                        <div class="stat-number">🎬</div>
+                        <div class="stat-label">Educational Videos</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">👶</div>
+                        <div class="stat-label">Kid-Friendly Content</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">🌈</div>
+                        <div class="stat-label">Colorful Learning</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">What We Offer</h2>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🔤</div>
+                    <h3>ABCs & Phonics</h3>
+                    <p>Fun alphabet songs and phonics lessons to help kids learn letters and sounds!</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🔢</div>
+                    <h3>Numbers & Math</h3>
+                    <p>Counting, addition, shapes - making math exciting and easy to understand!</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Creative Arts</h3>
+                    <p>Drawing, coloring, and crafts that boost creativity and fine motor skills!</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🔬</div>
+                    <h3>Science Fun</h3>
+                    <p>Simple experiments and discoveries that make science magical!</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">📚</div>
+                    <h3>Story Time</h3>
+                    <p>Engaging stories with valuable lessons and lovable characters!</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🎵</div>
+                    <h3>Music & Dance</h3>
+                    <p>Catchy songs and fun dances that kids love to sing and move to!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <section class="support" id="support">
+        <div class="container">
+            <div class="support-content">
+                <div class="coffee-icon">☕</div>
+                <h2 class="section-title" style="color: white;">Support Gigglers Academy</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                    Love our content? Help us create more amazing videos for kids! 
+                    Your support keeps the giggles going! 😊
+                </p>
+                <button class="btn btn-coffee" id="buyMeCoffee">
+                    ☕ Buy Me a Coffee
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <h3>Gigglers Academy</h3>
+            <p>Making learning fun, one giggle at a time! 😄</p>
+            <div class="social-links">
+                <a href="https://www.youtube.com/@GigglersAcademy" target="_blank" title="YouTube">▶️</a>
+            </div>
+            <p>&copy; 2025 Gigglers Academy. All rights reserved.</p>
+            <p>www.gigglersacademy.com</p>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Fade in on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Razorpay Integration for Buy Me a Coffee
+        document.getElementById('buyMeCoffee').addEventListener('click', function() {
+            var options = {
+                "key": "YOUR_RAZORPAY_KEY_ID", // Replace with your Razorpay Key ID
+                "amount": "5000", // Amount in paise (50 rupees = 5000 paise)
+                "currency": "INR",
+                "name": "Gigglers Academy",
+                "description": "Support Our Channel",
+                "image": "logo.png", // Your Gigglers Academy logo
+                "handler": function (response) {
+                    alert("Thank you for your support! Payment ID: " + response.razorpay_payment_id);
+                    // You can send this payment info to your server for verification
+                    console.log(response);
+                },
+                "prefill": {
+                    "name": "",
+                    "email": "",
+                    "contact": ""
+                },
+                "notes": {
+                    "address": "Gigglers Academy Support"
+                },
+                "theme": {
+                    "color": "#22A88D"
+                }
+            };
+            
+            var rzp1 = new Razorpay(options);
+            rzp1.on('payment.failed', function (response) {
+                alert("Payment failed. Please try again.");
+                console.log(response.error);
+            });
+            rzp1.open();
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
