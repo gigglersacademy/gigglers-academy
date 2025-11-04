@@ -11,7 +11,7 @@
     <title>Gigglers Academy - Fun Learning Videos for Kids | Educational Entertainment</title>
     <meta name="title" content="Gigglers Academy - Fun Learning Videos for Kids | Educational Entertainment">
     <meta name="description"
-        content="Join Gigglers Academy for engaging educational videos! Learn ABCs, numbers, science, and more through fun, colorful content designed for children. Subscribe for weekly videos!">
+        content="Join Gigglers Academy for engaging educational videos! Learn ABCs, numbers, science, and more through fun, colorful content designed for children.">
     <meta name="keywords"
         content="kids learning videos, educational videos for children, fun learning, alphabet songs, counting for kids, children's education, preschool learning, educational entertainment">
     <meta name="robots" content="index, follow">
@@ -34,20 +34,15 @@
         content="Engaging educational videos for children. Learn ABCs, numbers, science, and more through fun, colorful content!">
     <meta property="twitter:image" content="https://www.gigglersacademy.com/logo.png">
 
-
     <!-- Canonical URL -->
     <link rel="canonical" href="https://www.gigglersacademy.com/">
 
-    <!-- Favicon - Multiple Formats for Best Compatibility -->
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
-
-    <!-- Apple Touch Icon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-
-    <!-- Web App Manifest -->
     <link rel="manifest" href="/site.webmanifest">
 
     <!-- Preconnect for performance -->
@@ -58,7 +53,7 @@
 
     <!-- Buy Me a Coffee Widget -->
     <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
-        data-id="gigglersacademy" data-description="Support Gigglers Academy!" data-message="" data-color="#40DCA5"
+        data-id="gigglersacademy" data-description="Support Gigglers Academy!" data-message="" data-color="#8DC63F"
         data-position="Right" data-x_margin="18" data-y_margin="18" defer></script>
 
     <!-- Structured Data for SEO -->
@@ -94,17 +89,25 @@
         }
 
         :root {
+            /* Color Palette from Logo */
             --primary: #22A88D;
-            --secondary: #86BF3E;
-            --accent: #40DCA5;
-            --light-bg: #F0F9F7;
+            --secondary: #8DC63F;
+            --accent: #5BC2E7;
+            --light-bg: #F0FAFB;
+            --lighter-bg: #FAFCFD;
             --dark-text: #2C3E50;
             --light-text: #ffffff;
-            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
-            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
-            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
+            --gray-text: #64748B;
+            --medium-gray: #94A3B8;
+            --shadow-soft: 0 1px 3px rgba(34, 168, 141, 0.05);
+            --shadow-sm: 0 2px 12px rgba(34, 168, 141, 0.08);
+            --shadow-md: 0 4px 20px rgba(34, 168, 141, 0.12);
+            --shadow-lg: 0 8px 40px rgba(34, 168, 141, 0.18);
+            --shadow-xl: 0 20px 60px rgba(34, 168, 141, 0.25);
+            --shadow-colored: 0 10px 40px rgba(91, 194, 231, 0.3);
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
         body {
@@ -135,16 +138,105 @@
             border: 0;
         }
 
-        /* Modern Header */
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+
+        .loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader {
+            position: relative;
+            width: 70px;
+            height: 70px;
+        }
+
+        .loader-circle {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--secondary));
+            z-index: 10001;
+            transition: width 0.1s ease-out;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-bounce);
+            z-index: 999;
+            box-shadow: var(--shadow-lg);
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* Header with Glass Effect */
         header {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: var(--shadow-sm);
-            animation: slideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 2px 20px rgba(34, 168, 141, 0.08);
+            animation: slideDown 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            border-bottom: 1px solid rgba(34, 168, 141, 0.08);
         }
 
         @keyframes slideDown {
@@ -172,6 +264,8 @@
             display: flex;
             align-items: center;
             transition: transform 0.3s ease;
+            filter: drop-shadow(0 2px 8px rgba(34, 168, 141, 0.15));
+            cursor: pointer;
         }
 
         .logo:hover {
@@ -179,7 +273,7 @@
         }
 
         .logo img {
-            height: 50px;
+            height: 55px;
             width: auto;
         }
 
@@ -196,40 +290,75 @@
             font-weight: 600;
             font-size: 0.95rem;
             position: relative;
-            transition: color 0.3s ease;
+            transition: var(--transition);
             letter-spacing: 0.3px;
+            padding: 8px 0;
         }
 
-        .nav-links a::after {
+        .nav-links a::before {
             content: '';
             position: absolute;
             width: 0;
-            height: 2px;
-            bottom: -6px;
+            height: 3px;
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
             background: linear-gradient(90deg, var(--primary), var(--accent));
-            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 2px;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 3px;
         }
 
         .nav-links a:hover {
             color: var(--primary);
         }
 
-        .nav-links a:hover::after {
+        .nav-links a:hover::before {
             width: 100%;
         }
 
-        /* Modern Hero Section */
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0;
+            border: none;
+            background: transparent;
+            transition: var(--transition);
+        }
+
+        .hamburger span {
+            width: 26px;
+            height: 2px;
+            background: var(--primary);
+            margin: 4px 0;
+            transition: var(--transition-bounce);
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Hero Section with Animated Background */
         .hero {
             background: linear-gradient(135deg,
                     rgba(34, 168, 141, 0.95) 0%,
-                    rgba(64, 220, 165, 0.95) 100%);
-            padding: 160px 2rem 100px;
+                    rgba(91, 194, 231, 0.95) 50%,
+                    rgba(141, 198, 63, 0.95) 100%);
+            padding: 180px 2rem 120px;
             text-align: center;
             color: var(--light-text);
-            margin-top: 70px;
+            margin-top: 75px;
             position: relative;
             overflow: hidden;
         }
@@ -241,19 +370,29 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.3;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            animation: moveBackground 40s linear infinite;
+        }
+
+        @keyframes moveBackground {
+            from {
+                transform: translateX(0) translateY(0);
+            }
+
+            to {
+                transform: translateX(100px) translateY(100px);
+            }
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             position: relative;
             z-index: 1;
-            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            animation: heroFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        @keyframes fadeInUp {
+        @keyframes heroFadeIn {
             from {
                 opacity: 0;
                 transform: translateY(40px);
@@ -266,42 +405,45 @@
         }
 
         .hero h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            margin-bottom: 1rem;
-            font-weight: 800;
-            line-height: 1.2;
-            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
-            letter-spacing: -0.5px;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            margin-bottom: 1.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+            letter-spacing: -1.5px;
         }
 
         .hero p {
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
-            margin-bottom: 2.5rem;
-            opacity: 0.95;
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            margin-bottom: 3rem;
+            opacity: 0.98;
             font-weight: 400;
-            max-width: 600px;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
         }
 
-        /* Modern Buttons */
+        /* Buttons */
         .btn {
-            display: inline-block;
-            padding: 16px 40px;
-            margin: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 18px 40px;
+            margin: 10px;
             background: var(--secondary);
             color: var(--light-text);
             text-decoration: none;
             border-radius: 50px;
             font-weight: 700;
-            font-size: 1rem;
-            transition: var(--transition);
-            box-shadow: var(--shadow-md);
+            font-size: 1.05rem;
+            transition: var(--transition-bounce);
+            box-shadow: 0 8px 25px rgba(141, 198, 63, 0.4);
             border: none;
             cursor: pointer;
             position: relative;
             overflow: hidden;
-            letter-spacing: 0.3px;
+            letter-spacing: 0.5px;
         }
 
         .btn::before {
@@ -311,8 +453,8 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.7s;
         }
 
         .btn:hover::before {
@@ -320,12 +462,12 @@
         }
 
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(141, 198, 63, 0.5);
         }
 
         .btn:active {
-            transform: translateY(-1px);
+            transform: translateY(-2px) scale(1.02);
         }
 
         .btn-primary {
@@ -335,338 +477,539 @@
         .btn-secondary {
             background: transparent;
             border: 2px solid var(--light-text);
-            box-shadow: none;
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: white;
+        }
+
+        .btn-icon {
+            font-size: 1.1rem;
         }
 
         /* Sections */
         section {
-            padding: clamp(60px, 10vw, 100px) 2rem;
+            padding: clamp(80px, 12vw, 130px) 2rem;
+            position: relative;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .section-title {
             text-align: center;
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            margin-bottom: 3.5rem;
+            font-size: clamp(2.3rem, 5vw, 3.5rem);
+            margin-bottom: 1.2rem;
             color: var(--primary);
             position: relative;
-            padding-bottom: 1rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
+            font-weight: 900;
+            letter-spacing: -1.5px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: clamp(1.05rem, 2vw, 1.25rem);
+            color: var(--gray-text);
+            margin-bottom: 4.5rem;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
         }
 
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: 0;
+            bottom: -20px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            border-radius: 2px;
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--secondary));
+            border-radius: 5px;
+            animation: pulseWidth 2s ease-in-out infinite;
         }
 
-        /* About Section */
+        @keyframes pulseWidth {
+
+            0%,
+            100% {
+                width: 100px;
+            }
+
+            50% {
+                width: 120px;
+            }
+        }
+
+        /* Why Choose Us Section */
+        .why-choose {
+            background: var(--light-bg);
+        }
+
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .reason-card {
+            background: white;
+            padding: 3rem 2.5rem;
+            border-radius: 25px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-bounce);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reason-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transform: scaleX(0);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reason-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .reason-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-colored);
+            border-color: var(--accent);
+        }
+
+        .reason-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-bounce);
+        }
+
+        .reason-card:hover .reason-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .reason-card h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            text-align: center;
+        }
+
+        .reason-card p {
+            color: var(--gray-text);
+            line-height: 1.8;
+            font-size: 1.05rem;
+            text-align: center;
+        }
+
+        /* Learning Topics Section */
+        .learning-topics {
+            background: white;
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .topic-card {
+            background: linear-gradient(135deg, white 0%, var(--lighter-bg) 100%);
+            padding: 3.5rem 2.5rem;
+            border-radius: 25px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-bounce);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .topic-card::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--accent) 0%, var(--primary) 100%);
+            opacity: 0;
+            transform: translate(-50%, -50%);
+            transition: width 0.7s, height 0.7s, opacity 0.7s;
+            z-index: 0;
+        }
+
+        .topic-card:hover::after {
+            width: 500px;
+            height: 500px;
+            opacity: 0.08;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--accent);
+        }
+
+        .topic-number {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--primary);
+            opacity: 0.1;
+            line-height: 1;
+        }
+
+        .topic-icon {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-bounce);
+            position: relative;
+            z-index: 1;
+        }
+
+        .topic-card:hover .topic-icon {
+            transform: scale(1.15) rotate(-5deg);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .topic-card h3 {
+            color: var(--primary);
+            font-size: 1.6rem;
+            margin-bottom: 1.2rem;
+            font-weight: 800;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .topic-card p {
+            color: var(--gray-text);
+            line-height: 1.9;
+            font-size: 1.08rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* About Section with Two Columns */
         .about {
             background: var(--light-bg);
         }
 
         .about-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 4rem;
             align-items: start;
         }
 
-        .about-text {
-            opacity: 0;
-            animation: fadeInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-40px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .about-text h3 {
-            color: var(--primary);
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-        }
-
-        .about-text p {
-            font-size: 1.05rem;
-            line-height: 1.8;
-            margin-bottom: 1.2rem;
-            color: #4a5568;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1.5rem;
-            opacity: 0;
-            animation: fadeInRight 0.8s 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(40px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .stat-card {
+        .about-column {
             background: white;
-            padding: 2rem 1.5rem;
-            border-radius: 20px;
-            text-align: center;
+            padding: 3.5rem 3rem;
+            border-radius: 25px;
             box-shadow: var(--shadow-sm);
             transition: var(--transition);
-            border: 1px solid rgba(34, 168, 141, 0.1);
+            border: 2px solid transparent;
         }
 
-        .stat-card:hover {
-            transform: translateY(-8px);
+        .about-column:hover {
             box-shadow: var(--shadow-lg);
             border-color: var(--accent);
+            transform: translateY(-5px);
         }
 
-        .stat-number {
-            font-size: 3rem;
-            line-height: 1;
+        .about-column h3 {
+            color: var(--primary);
+            font-size: clamp(1.7rem, 3vw, 2.3rem);
+            margin-bottom: 2rem;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            position: relative;
+            padding-bottom: 1rem;
         }
 
-        .stat-label {
+        .about-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
+        .about-column p {
+            font-size: 1.08rem;
+            line-height: 1.9;
+            margin-bottom: 1.8rem;
+            color: var(--gray-text);
+        }
+
+        .about-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+
+        .about-column li {
+            padding: 1rem 0;
+            padding-left: 2.5rem;
+            position: relative;
+            font-size: 1.08rem;
             color: var(--dark-text);
-            font-size: 0.95rem;
-            margin-top: 0.8rem;
-            font-weight: 600;
+            line-height: 1.7;
+            transition: var(--transition);
         }
 
-        /* Features Section */
-        .features {
+        .about-column li:hover {
+            transform: translateX(5px);
+            color: var(--primary);
+        }
+
+        .about-column li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 1.5rem;
+            top: 0.8rem;
+        }
+
+        /* Benefits Section */
+        .benefits {
             background: white;
         }
 
-        .features-grid {
+        .benefits-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
         }
 
-        .feature-card {
-            background: linear-gradient(135deg, #ffffff 0%, var(--light-bg) 100%);
+        .benefit-item {
+            background: linear-gradient(135deg, var(--lighter-bg) 0%, white 100%);
             padding: 2.5rem 2rem;
             border-radius: 20px;
-            text-align: center;
-            transition: var(--transition);
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition-bounce);
             border: 2px solid transparent;
-            opacity: 0;
-            animation: fadeInScale 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            text-align: center;
         }
 
-        .feature-card:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-
-        .feature-card:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .feature-card:nth-child(3) {
-            animation-delay: 0.3s;
-        }
-
-        .feature-card:nth-child(4) {
-            animation-delay: 0.4s;
-        }
-
-        .feature-card:nth-child(5) {
-            animation-delay: 0.5s;
-        }
-
-        .feature-card:nth-child(6) {
-            animation-delay: 0.6s;
-        }
-
-        @keyframes fadeInScale {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .feature-card:hover {
+        .benefit-item:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: var(--shadow-md);
             border-color: var(--accent);
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: var(--shadow-lg);
         }
 
-        .feature-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+        .benefit-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 4px 12px rgba(34, 168, 141, 0.2));
+            transition: var(--transition-bounce);
         }
 
-        .feature-card h3 {
+        .benefit-item:hover .benefit-icon {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .benefit-item h4 {
             color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
-            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            font-weight: 800;
         }
 
-        .feature-card p {
-            color: #4a5568;
+        .benefit-item p {
+            color: var(--gray-text);
+            font-size: 1rem;
             line-height: 1.7;
-            font-size: 0.95rem;
         }
 
-        /* Support Section */
-        .support {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg,
+                    var(--primary) 0%,
+                    var(--accent) 50%,
+                    var(--secondary) 100%);
             color: var(--light-text);
             text-align: center;
             position: relative;
             overflow: hidden;
         }
 
-        .support::before {
+        .cta-section::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: moveBackground 50s linear infinite;
         }
 
-        .support-content {
-            max-width: 600px;
+        .cta-content {
+            max-width: 750px;
             margin: 0 auto;
             position: relative;
             z-index: 1;
         }
 
-        .support h2 {
+        .cta-section h2 {
             color: white !important;
         }
 
-        .support h2::after {
+        .cta-section h2::after {
             background: white;
         }
 
-        .support p {
-            font-size: 1.15rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-            line-height: 1.7;
+        .cta-section p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.98;
+            line-height: 1.9;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .support-note {
-            font-size: 1rem;
-            margin-top: 1.5rem;
-            opacity: 0.9;
+            font-size: 1.08rem;
+            margin-top: 2rem;
+            opacity: 0.92;
             font-style: italic;
+            animation: gentlePulse 3s ease-in-out infinite;
+        }
+
+        @keyframes gentlePulse {
+
+            0%,
+            100% {
+                opacity: 0.92;
+            }
+
+            50% {
+                opacity: 1;
+            }
         }
 
         /* Footer */
         footer {
-            background: #1a202c;
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
             color: var(--light-text);
-            text-align: center;
-            padding: 3rem 2rem 2rem;
+            padding: 4rem 2rem 2rem;
+            position: relative;
         }
 
-        footer h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--secondary));
         }
 
-        footer p {
-            opacity: 0.8;
-            margin: 0.5rem 0;
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            font-weight: 900;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            line-height: 2.2;
+            font-size: 0.98rem;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
         }
 
         .social-links {
-            margin: 2rem 0 1.5rem;
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
         }
 
-        .social-links a {
-            color: var(--light-text);
-            font-size: 1.8rem;
-            margin: 0 1rem;
-            transition: var(--transition);
-            text-decoration: none;
-            display: inline-block;
+        .social-link {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-bounce);
+            font-size: 1.4rem;
         }
 
-        .social-links a:hover {
-            color: var(--accent);
-            transform: scale(1.3) translateY(-3px);
+        .social-link:hover {
+            background: var(--accent);
+            transform: translateY(-5px) scale(1.15);
+            box-shadow: 0 8px 25px rgba(91, 194, 231, 0.4);
         }
 
-        /* Hamburger Menu */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            padding: 8px;
-            border-radius: 8px;
-            transition: var(--transition);
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.85;
         }
 
-        .hamburger:hover {
-            background: rgba(34, 168, 141, 0.1);
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: var(--primary);
-            margin: 3px 0;
-            transition: var(--transition);
-            border-radius: 2px;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(-45deg) translate(-6px, 6px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(45deg) translate(-6px, -6px);
+        .footer-bottom p {
+            margin: 0.5rem 0;
         }
 
         /* Responsive Design */
@@ -674,16 +1017,18 @@
             .nav-links {
                 position: fixed;
                 right: -100%;
-                top: 70px;
+                top: 75px;
                 flex-direction: column;
                 background: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(10px);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
                 width: 100%;
                 text-align: center;
-                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                padding: 2rem 0;
+                transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                padding: 3rem 0;
                 box-shadow: var(--shadow-lg);
-                gap: 1.5rem;
+                gap: 2rem;
+                border-top: 2px solid rgba(34, 168, 141, 0.1);
             }
 
             .nav-links.active {
@@ -695,19 +1040,38 @@
             }
 
             .hero {
-                padding: 120px 1.5rem 80px;
+                padding: 140px 1.5rem 100px;
             }
 
-            .about-content {
+            .about-content,
+            .footer-content {
                 grid-template-columns: 1fr;
             }
 
-            .features-grid {
+            .reasons-grid,
+            .topics-grid,
+            .benefits-grid {
                 grid-template-columns: 1fr;
             }
 
             section {
                 padding: 60px 1.5rem;
+            }
+
+            .btn {
+                padding: 16px 32px;
+                font-size: 0.98rem;
+            }
+
+            .back-to-top {
+                width: 45px;
+                height: 45px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .about-column {
+                padding: 2.5rem 2rem;
             }
         }
 
@@ -722,40 +1086,35 @@
                 transition-duration: 0.01ms !important;
             }
         }
-
-        /* Loading State */
-        .page-loading {
-            opacity: 0;
-            animation: fadeIn 0.5s ease-out forwards;
-        }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
-        }
-
-        /* Smooth scroll behavior */
-        @supports (scroll-behavior: smooth) {
-            html {
-                scroll-behavior: smooth;
-            }
-        }
     </style>
 </head>
 
-<body class="page-loading">
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader">
+            <div class="loader-circle"></div>
+        </div>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
     <!-- Header -->
     <header>
         <nav role="navigation" aria-label="Main navigation">
-            <div class="logo">
-                <img src="logo.png" alt="Gigglers Academy Logo - Educational Videos for Kids" width="50" height="50">
-            </div>
+            <a href="#home" class="logo" aria-label="Gigglers Academy Home">
+                <img src="logo.png" alt="Gigglers Academy Logo" width="55" height="55">
+            </a>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#home" aria-label="Go to home section">Home</a></li>
-                <li><a href="#about" aria-label="Learn about us">About</a></li>
-                <li><a href="#features" aria-label="View our content">Content</a></li>
-                <li><a href="#support" aria-label="Support us">Support Us</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#why-choose">Why Us</a></li>
+                <li><a href="#learning">Learning</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#support">Support</a></li>
             </ul>
             <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
                 <span></span>
@@ -768,13 +1127,116 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1>Welcome to Gigglers Academy!</h1>
-            <p>Where Learning Meets Fun! Educational & Entertaining Videos for Kids</p>
-            <a href="https://www.youtube.com/@GigglersAcademy" target="_blank" rel="noopener noreferrer"
-                class="btn btn-primary" aria-label="Visit our YouTube channel">
-                🎬 Visit Our Channel
-            </a>
-            <a href="#about" class="btn btn-secondary" aria-label="Learn more about Gigglers Academy">Learn More</a>
+            <h1>Welcome to Gigglers Academy</h1>
+            <p>Transforming Learning into Adventure Through Engaging Educational Content</p>
+            <div>
+                <a href="https://www.youtube.com/@GigglersAcademy" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-primary">
+                    <span class="btn-icon">▶</span>
+                    <span>Explore Channel</span>
+                </a>
+                <a href="#why-choose" class="btn btn-secondary">Discover More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose" id="why-choose">
+        <div class="container">
+            <h2 class="section-title">Why Choose Gigglers Academy</h2>
+            <p class="section-subtitle">Trusted by parents worldwide for quality educational content that combines
+                learning with entertainment</p>
+            <div class="reasons-grid">
+                <article class="reason-card">
+                    <div class="reason-icon">🎓</div>
+                    <h3>Expert-Designed Content</h3>
+                    <p>Every video is created with input from educational specialists to ensure age-appropriate learning
+                        objectives are met while keeping children engaged.</p>
+                </article>
+                <article class="reason-card">
+                    <div class="reason-icon">🛡️</div>
+                    <h3>Safe Learning Environment</h3>
+                    <p>Content is carefully reviewed to ensure it's completely safe, positive, and free from
+                        inappropriate material for young viewers.</p>
+                </article>
+                <article class="reason-card">
+                    <div class="reason-icon">🎨</div>
+                    <h3>Engaging Visual Design</h3>
+                    <p>Colorful animations and interactive elements are designed to capture attention and enhance
+                        information retention through visual learning.</p>
+                </article>
+                <article class="reason-card">
+                    <div class="reason-icon">📖</div>
+                    <h3>Curriculum-Aligned</h3>
+                    <p>Our content aligns with early childhood education standards, supporting what children learn in
+                        preschool and kindergarten.</p>
+                </article>
+                <article class="reason-card">
+                    <div class="reason-icon">❤️</div>
+                    <h3>Positive Reinforcement</h3>
+                    <p>We encourage learning through positive messages, building confidence and fostering a love for
+                        discovery in every child.</p>
+                </article>
+                <article class="reason-card">
+                    <div class="reason-icon">🌍</div>
+                    <h3>Inclusive Content</h3>
+                    <p>Diverse representation and inclusive storytelling ensure every child sees themselves reflected in
+                        our educational materials.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Topics Section -->
+    <section class="learning-topics" id="learning">
+        <div class="container">
+            <h2 class="section-title">Comprehensive Learning Topics</h2>
+            <p class="section-subtitle">Explore a rich variety of subjects designed to develop essential skills and
+                foster curiosity in young minds</p>
+            <div class="topics-grid">
+                <article class="topic-card">
+                    <div class="topic-number">01</div>
+                    <div class="topic-icon">ABC</div>
+                    <h3>Language & Literacy</h3>
+                    <p>Building strong foundations in reading and communication through phonics, vocabulary development,
+                        alphabet recognition, and storytelling that develops comprehension skills.</p>
+                </article>
+                <article class="topic-card">
+                    <div class="topic-number">02</div>
+                    <div class="topic-icon">123</div>
+                    <h3>Mathematics & Logic</h3>
+                    <p>Making numbers fun with counting exercises, pattern recognition, basic arithmetic, shape
+                        identification, and problem-solving activities that build logical thinking.</p>
+                </article>
+                <article class="topic-card">
+                    <div class="topic-number">03</div>
+                    <div class="topic-icon">🎨</div>
+                    <h3>Creative Arts</h3>
+                    <p>Encouraging artistic expression through drawing, painting, crafting, and creative projects that
+                        develop fine motor skills and imagination.</p>
+                </article>
+                <article class="topic-card">
+                    <div class="topic-number">04</div>
+                    <div class="topic-icon">🔬</div>
+                    <h3>Science Discovery</h3>
+                    <p>Sparking scientific curiosity through simple experiments, nature exploration, understanding cause
+                        and effect, and learning about the world around us.</p>
+                </article>
+                <article class="topic-card">
+                    <div class="topic-number">05</div>
+                    <div class="topic-icon">🌍</div>
+                    <h3>World & Culture</h3>
+                    <p>Expanding horizons through geography basics, cultural awareness, community helpers, and
+                        understanding diversity in our global community.</p>
+                </article>
+                <article class="topic-card">
+                    <div class="topic-number">06</div>
+                    <div class="topic-icon">🎵</div>
+                    <h3>Music & Movement</h3>
+                    <p>Developing coordination and rhythm through educational songs, dance activities, musical
+                        exploration, and physical movement exercises.</p>
+                </article>
+            </div>
         </div>
     </section>
 
@@ -782,119 +1244,186 @@
     <section class="about" id="about">
         <div class="container">
             <h2 class="section-title">About Gigglers Academy</h2>
+            <p class="section-subtitle">Dedicated to creating educational experiences that inspire lifelong learning and
+                curiosity</p>
             <div class="about-content">
-                <div class="about-text">
-                    <h3>Making Learning Fun for Every Child!</h3>
+                <div class="about-column">
+                    <h3>Our Educational Philosophy</h3>
                     <p>
-                        Gigglers Academy is your child's favorite destination for educational entertainment!
-                        We create engaging, colorful, and fun videos that make learning an adventure.
+                        At Gigglers Academy, we believe that children learn best when they're having fun. Our approach
+                        combines evidence-based educational methods with entertaining content delivery to create an
+                        optimal learning environment.
                     </p>
                     <p>
-                        From alphabet songs to number counting, science experiments to creative storytelling,
-                        our content is designed to spark curiosity and foster a love for learning in young minds.
+                        Every piece of content undergoes thorough review by education professionals to ensure it meets
+                        developmental milestones and learning objectives appropriate for each age group.
                     </p>
-                    <p>
-                        Join our growing community of happy learners and subscribe today for new videos every week!
-                    </p>
+                    <ul>
+                        <li>Research-backed learning methodologies</li>
+                        <li>Age-appropriate content progression</li>
+                        <li>Multi-sensory learning experiences</li>
+                        <li>Regular content updates and improvements</li>
+                        <li>Parent resources and learning guides</li>
+                    </ul>
                     <a href="https://www.youtube.com/@GigglersAcademy?sub_confirmation=1" target="_blank"
-                        rel="noopener noreferrer" class="btn btn-primary" aria-label="Subscribe to our YouTube channel">
-                        Subscribe Now! 🔔
+                        rel="noopener noreferrer" class="btn btn-primary">
+                        <span class="btn-icon">🔔</span>
+                        <span>Subscribe Today</span>
                     </a>
                 </div>
-                <div class="stats">
-                    <div class="stat-card">
-                        <div class="stat-number" aria-hidden="true">🎬</div>
-                        <div class="stat-label">Educational Videos</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number" aria-hidden="true">👶</div>
-                        <div class="stat-label">Kid-Friendly Content</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number" aria-hidden="true">🌈</div>
-                        <div class="stat-label">Colorful Learning</div>
-                    </div>
+                <div class="about-column">
+                    <h3>Trusted by Parents Worldwide</h3>
+                    <p>
+                        Parents choose Gigglers Academy because we prioritize their children's development and safety.
+                        Our commitment to quality and educational value has made us a preferred choice for early
+                        learning.
+                    </p>
+                    <p>
+                        We understand the responsibility that comes with creating content for young minds. That's why we
+                        maintain the highest standards in every aspect of our production process.
+                    </p>
+                    <ul>
+                        <li>Thoroughly vetted educational material</li>
+                        <li>Safe and positive learning environment</li>
+                        <li>No inappropriate ads or content</li>
+                        <li>Transparent and honest communication</li>
+                        <li>Responsive to parent feedback</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features" id="features">
+    <!-- Learning Benefits Section -->
+    <section class="benefits">
         <div class="container">
-            <h2 class="section-title">What We Offer</h2>
-            <div class="features-grid">
-                <article class="feature-card">
-                    <div class="feature-icon" aria-hidden="true">🔤</div>
-                    <h3>ABCs & Phonics</h3>
-                    <p>Fun alphabet songs and phonics lessons to help kids learn letters and sounds!</p>
-                </article>
-                <article class="feature-card">
-                    <div class="feature-icon" aria-hidden="true">🔢</div>
-                    <h3>Numbers & Math</h3>
-                    <p>Counting, addition, shapes - making math exciting and easy to understand!</p>
-                </article>
-                <article class="feature-card">
-                    <div class="feature-icon" aria-hidden="true">🎨</div>
-                    <h3>Creative Arts</h3>
-                    <p>Drawing, coloring, and crafts that boost creativity and fine motor skills!</p>
-                </article>
-                <article class="feature-card">
-                    <div class="feature-icon" aria-hidden="true">🔬</div>
-                    <h3>Science Fun</h3>
-                    <p>Simple experiments and discoveries that make science magical!</p>
-                </article>
-                <article class="feature-card">
-                    <div class="feature-icon" aria-hidden="true">📚</div>
-                    <h3>Story Time</h3>
-                    <p>Engaging stories with valuable lessons and lovable characters!</p>
-                </article>
-                <article class="feature-card">
-                    <div class="feature-icon" aria-hidden="true">🎵</div>
-                    <h3>Music & Dance</h3>
-                    <p>Catchy songs and fun dances that kids love to sing and move to!</p>
-                </article>
+            <h2 class="section-title">What Your Child Will Gain</h2>
+            <p class="section-subtitle">The skills and knowledge developed through our educational content</p>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">🧠</div>
+                    <h4>Cognitive Development</h4>
+                    <p>Enhanced memory, attention span, and critical thinking abilities</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">💬</div>
+                    <h4>Language Skills</h4>
+                    <p>Improved vocabulary, pronunciation, and communication confidence</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🎯</div>
+                    <h4>Focus & Concentration</h4>
+                    <p>Better ability to pay attention and complete learning tasks</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🌟</div>
+                    <h4>Creativity & Imagination</h4>
+                    <p>Encourages original thinking and creative problem-solving</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🤝</div>
+                    <h4>Social Awareness</h4>
+                    <p>Understanding of emotions, empathy, and social interactions</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🚀</div>
+                    <h4>Love for Learning</h4>
+                    <p>Develops curiosity and enthusiasm for acquiring new knowledge</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Support Section -->
-    <section class="support" id="support">
+    <!-- CTA Section -->
+    <section class="cta-section" id="support">
         <div class="container">
-            <div class="support-content">
-                <h2 class="section-title">Support Gigglers Academy</h2>
+            <div class="cta-content">
+                <h2 class="section-title">Support Quality Education</h2>
                 <p>
-                    Love our content? Help us create more amazing videos for kids!
-                    Your support keeps the giggles going!
+                    Help us continue creating exceptional educational content that makes a real difference in
+                    children's lives. Your support enables us to maintain high production standards and reach more
+                    young learners around the world.
                 </p>
                 <p class="support-note">
-                    Click the floating coffee button on the bottom right to support us!
+                    Use the support button in the bottom right corner to contribute
                 </p>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer role="contentinfo">
+    <footer>
         <div class="container">
-            <h3>Gigglers Academy</h3>
-            <p>Making learning fun, one giggle at a time!</p>
-            <div class="social-links">
-                <a href="https://www.youtube.com/@GigglersAcademy" target="_blank" rel="noopener noreferrer"
-                    aria-label="Visit our YouTube channel" title="YouTube">
-                    ▶️
-                </a>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Gigglers Academy</h3>
+                    <p>Creating joyful learning experiences that inspire curiosity and foster a lifelong love of
+                        education.</p>
+                    <div class="social-links">
+                        <a href="https://www.youtube.com/@GigglersAcademy" target="_blank" rel="noopener noreferrer"
+                            class="social-link" aria-label="YouTube Channel">▶</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="#home">Home</a>
+                    <a href="#why-choose">Why Choose Us</a>
+                    <a href="#learning">Learning Topics</a>
+                    <a href="#about">About Us</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Learning Areas</h3>
+                    <a href="#learning">Language & Literacy</a>
+                    <a href="#learning">Mathematics</a>
+                    <a href="#learning">Creative Arts</a>
+                    <a href="#learning">Science Discovery</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Get Started</h3>
+                    <p>Subscribe to our YouTube channel for new educational content</p>
+                    <a href="https://www.youtube.com/@GigglersAcademy?sub_confirmation=1" target="_blank"
+                        rel="noopener noreferrer">Subscribe Now</a>
+                </div>
             </div>
-            <p>&copy; 2025 Gigglers Academy. All rights reserved.</p>
-            <p><a href="https://www.gigglersacademy.com"
-                    style="color: inherit; text-decoration: none;">www.gigglersacademy.com</a></p>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Gigglers Academy. All rights reserved.</p>
+                <p><a href="https://www.gigglersacademy.com"
+                        style="color: inherit; text-decoration: none;">www.gigglersacademy.com</a></p>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Page Load Animation
-        document.addEventListener('DOMContentLoaded', function () {
-            document.body.classList.add('page-loading');
+        // Loading Screen
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                document.getElementById('loadingScreen').classList.add('hidden');
+            }, 700);
+        });
+
+        // Scroll Progress Bar
+        window.addEventListener('scroll', function () {
+            const scrollProgress = document.getElementById('scrollProgress');
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrolled = (window.scrollY / scrollHeight) * 100;
+            scrollProgress.style.width = scrolled + '%';
+        });
+
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', function () {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
 
         // Hamburger Menu
@@ -905,8 +1434,6 @@
             const isOpen = navLinks.classList.toggle('active');
             hamburger.classList.toggle('active');
             hamburger.setAttribute('aria-expanded', isOpen);
-
-            // Prevent body scroll when menu is open on mobile
             document.body.style.overflow = isOpen ? 'hidden' : '';
         });
 
@@ -936,7 +1463,7 @@
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    const headerOffset = 80;
+                    const headerOffset = 90;
                     const elementPosition = target.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -948,41 +1475,13 @@
             });
         });
 
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe elements for animation
-        document.querySelectorAll('.stat-card, .feature-card').forEach(function (el) {
-            observer.observe(el);
-        });
-
-        // Performance: Lazy load images (if you add images)
-        if ('loading' in HTMLImageElement.prototype) {
-            const images = document.querySelectorAll('img[loading="lazy"]');
-            images.forEach(img => {
-                img.src = img.dataset.src;
-            });
-        }
-
         // Add active state to nav links based on scroll position
         window.addEventListener('scroll', function () {
             let current = '';
             const sections = document.querySelectorAll('section[id]');
 
             sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100;
+                const sectionTop = section.offsetTop - 120;
                 const sectionHeight = section.clientHeight;
                 if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
                     current = section.getAttribute('id');
