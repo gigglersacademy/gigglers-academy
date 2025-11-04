@@ -355,7 +355,7 @@
                     rgba(34, 168, 141, 0.95) 0%,
                     rgba(91, 194, 231, 0.95) 50%,
                     rgba(141, 198, 63, 0.95) 100%);
-            padding: 180px 2rem 120px;
+            padding: 120px 2rem 80px;
             text-align: center;
             color: var(--light-text);
             margin-top: 75px;
@@ -405,8 +405,8 @@
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            margin-bottom: 1.5rem;
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            margin-bottom: 1rem;
             font-weight: 900;
             line-height: 1.1;
             text-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
@@ -414,8 +414,8 @@
         }
 
         .hero p {
-            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-            margin-bottom: 3rem;
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            margin-bottom: 2rem;
             opacity: 0.98;
             font-weight: 400;
             max-width: 700px;
@@ -429,14 +429,14 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 18px 40px;
-            margin: 10px;
+            padding: 14px 32px;
+            margin: 8px;
             background: var(--secondary);
             color: var(--light-text);
             text-decoration: none;
             border-radius: 50px;
             font-weight: 700;
-            font-size: 1.05rem;
+            font-size: 1rem;
             transition: var(--transition-bounce);
             box-shadow: 0 8px 25px rgba(141, 198, 63, 0.4);
             border: none;
@@ -491,7 +491,7 @@
 
         /* Sections */
         section {
-            padding: clamp(80px, 12vw, 130px) 2rem;
+            padding: clamp(50px, 8vw, 85px) 2rem;
             position: relative;
         }
 
@@ -504,29 +504,30 @@
 
         .section-title {
             text-align: center;
-            font-size: clamp(2.3rem, 5vw, 3.5rem);
-            margin-bottom: 1.2rem;
+            font-size: clamp(2rem, 4.5vw, 2.8rem);
+            margin-bottom: 2.8rem;
             color: var(--primary);
             position: relative;
             font-weight: 900;
-            letter-spacing: -1.5px;
+            letter-spacing: -1px;
+            padding-bottom: 1.2rem;
         }
 
         .section-subtitle {
             text-align: center;
-            font-size: clamp(1.05rem, 2vw, 1.25rem);
+            font-size: clamp(0.95rem, 1.8vw, 1.1rem);
             color: var(--gray-text);
-            margin-bottom: 4.5rem;
+            margin-bottom: 3rem;
             max-width: 750px;
             margin-left: auto;
             margin-right: auto;
-            line-height: 1.7;
+            line-height: 1.6;
         }
 
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -20px;
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
             width: 100px;
@@ -556,12 +557,12 @@
         .reasons-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
+            gap: 2rem;
         }
 
         .reason-card {
             background: white;
-            padding: 3rem 2.5rem;
+            padding: 2.2rem 2rem;
             border-radius: 25px;
             box-shadow: var(--shadow-sm);
             transition: var(--transition-bounce);
@@ -593,15 +594,15 @@
         }
 
         .reason-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 2rem;
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 1.3rem;
             background: linear-gradient(135deg, var(--primary), var(--accent));
             border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             box-shadow: var(--shadow-md);
             transition: var(--transition-bounce);
         }
@@ -613,16 +614,16 @@
 
         .reason-card h3 {
             color: var(--primary);
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
             font-weight: 800;
             text-align: center;
         }
 
         .reason-card p {
             color: var(--gray-text);
-            line-height: 1.8;
-            font-size: 1.05rem;
+            line-height: 1.6;
+            font-size: 0.98rem;
             text-align: center;
         }
 
@@ -634,12 +635,12 @@
         .topics-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
+            gap: 2.2rem;
         }
 
         .topic-card {
             background: linear-gradient(135deg, white 0%, var(--lighter-bg) 100%);
-            padding: 3.5rem 2.5rem;
+            padding: 2.5rem 2rem;
             border-radius: 25px;
             box-shadow: var(--shadow-sm);
             transition: var(--transition-bounce);
@@ -687,15 +688,15 @@
         }
 
         .topic-icon {
-            width: 90px;
-            height: 90px;
-            margin: 0 auto 2rem;
+            width: 75px;
+            height: 75px;
+            margin: 0 auto 1.3rem;
             background: linear-gradient(135deg, var(--primary), var(--accent));
             border-radius: 22px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
+            font-size: 2.5rem;
             box-shadow: var(--shadow-md);
             transition: var(--transition-bounce);
             position: relative;
@@ -709,8 +710,8 @@
 
         .topic-card h3 {
             color: var(--primary);
-            font-size: 1.6rem;
-            margin-bottom: 1.2rem;
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
             font-weight: 800;
             text-align: center;
             position: relative;
@@ -719,8 +720,8 @@
 
         .topic-card p {
             color: var(--gray-text);
-            line-height: 1.9;
-            font-size: 1.08rem;
+            line-height: 1.7;
+            font-size: 0.98rem;
             text-align: center;
             position: relative;
             z-index: 1;
@@ -734,13 +735,13 @@
         .about-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 4rem;
+            gap: 2.5rem;
             align-items: start;
         }
 
         .about-column {
             background: white;
-            padding: 3.5rem 3rem;
+            padding: 2.5rem 2.2rem;
             border-radius: 25px;
             box-shadow: var(--shadow-sm);
             transition: var(--transition);
@@ -755,12 +756,12 @@
 
         .about-column h3 {
             color: var(--primary);
-            font-size: clamp(1.7rem, 3vw, 2.3rem);
-            margin-bottom: 2rem;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            margin-bottom: 1.3rem;
             font-weight: 900;
             letter-spacing: -0.5px;
             position: relative;
-            padding-bottom: 1rem;
+            padding-bottom: 0.8rem;
         }
 
         .about-column h3::after {
@@ -775,25 +776,25 @@
         }
 
         .about-column p {
-            font-size: 1.08rem;
-            line-height: 1.9;
-            margin-bottom: 1.8rem;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.3rem;
             color: var(--gray-text);
         }
 
         .about-column ul {
             list-style: none;
             padding: 0;
-            margin: 2rem 0;
+            margin: 1.5rem 0;
         }
 
         .about-column li {
-            padding: 1rem 0;
-            padding-left: 2.5rem;
+            padding: 0.7rem 0;
+            padding-left: 2.2rem;
             position: relative;
-            font-size: 1.08rem;
+            font-size: 1rem;
             color: var(--dark-text);
-            line-height: 1.7;
+            line-height: 1.6;
             transition: var(--transition);
         }
 
@@ -809,7 +810,7 @@
             color: var(--secondary);
             font-weight: bold;
             font-size: 1.5rem;
-            top: 0.8rem;
+            top: 0.4rem;
         }
 
         /* Benefits Section */
@@ -825,7 +826,7 @@
 
         .benefit-item {
             background: linear-gradient(135deg, var(--lighter-bg) 0%, white 100%);
-            padding: 2.5rem 2rem;
+            padding: 2rem 1.5rem;
             border-radius: 20px;
             box-shadow: var(--shadow-soft);
             transition: var(--transition-bounce);
@@ -834,33 +835,33 @@
         }
 
         .benefit-item:hover {
-            transform: translateY(-8px) scale(1.03);
+            transform: translateY(-6px) scale(1.02);
             box-shadow: var(--shadow-md);
             border-color: var(--accent);
         }
 
         .benefit-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
+            font-size: 3rem;
+            margin-bottom: 1rem;
             filter: drop-shadow(0 4px 12px rgba(34, 168, 141, 0.2));
             transition: var(--transition-bounce);
         }
 
         .benefit-item:hover .benefit-icon {
-            transform: scale(1.2) rotate(10deg);
+            transform: scale(1.15) rotate(8deg);
         }
 
         .benefit-item h4 {
             color: var(--primary);
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+            margin-bottom: 0.6rem;
             font-weight: 800;
         }
 
         .benefit-item p {
             color: var(--gray-text);
-            font-size: 1rem;
-            line-height: 1.7;
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
 
         /* CTA Section */
@@ -902,16 +903,16 @@
         }
 
         .cta-section p {
-            font-size: 1.25rem;
-            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+            margin-bottom: 1.8rem;
             opacity: 0.98;
-            line-height: 1.9;
+            line-height: 1.7;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .support-note {
-            font-size: 1.08rem;
-            margin-top: 2rem;
+            font-size: 1rem;
+            margin-top: 1.5rem;
             opacity: 0.92;
             font-style: italic;
             animation: gentlePulse 3s ease-in-out infinite;
@@ -933,7 +934,7 @@
         footer {
             background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
             color: var(--light-text);
-            padding: 4rem 2rem 2rem;
+            padding: 3rem 2rem 1.5rem;
             position: relative;
         }
 
@@ -952,13 +953,13 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
+            gap: 2.5rem;
+            margin-bottom: 2rem;
         }
 
         .footer-section h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
             font-weight: 900;
         }
 
@@ -966,8 +967,8 @@
         .footer-section a {
             color: rgba(255, 255, 255, 0.85);
             text-decoration: none;
-            line-height: 2.2;
-            font-size: 0.98rem;
+            line-height: 2;
+            font-size: 0.95rem;
             display: block;
             transition: var(--transition);
         }
@@ -1003,7 +1004,7 @@
 
         .footer-bottom {
             text-align: center;
-            padding-top: 2.5rem;
+            padding-top: 1.8rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             opacity: 0.85;
         }
@@ -1040,7 +1041,7 @@
             }
 
             .hero {
-                padding: 140px 1.5rem 100px;
+                padding: 110px 1.5rem 70px;
             }
 
             .about-content,
@@ -1055,12 +1056,12 @@
             }
 
             section {
-                padding: 60px 1.5rem;
+                padding: 45px 1.5rem;
             }
 
             .btn {
-                padding: 16px 32px;
-                font-size: 0.98rem;
+                padding: 13px 28px;
+                font-size: 0.95rem;
             }
 
             .back-to-top {
@@ -1071,7 +1072,7 @@
             }
 
             .about-column {
-                padding: 2.5rem 2rem;
+                padding: 2rem 1.5rem;
             }
         }
 
