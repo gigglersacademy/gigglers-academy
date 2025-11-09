@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Contact Us - Gigglers Academy</title>
+    <meta name="description" content="Contact Gigglers Academy - Get in touch with us for support, feedback, or inquiries.">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="canonical" href="https://www.gigglersacademy.com/contact.html">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" 
+        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" 
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        :root {
+            --primary: #22A88D;
+            --secondary: #8DC63F;
+            --accent: #5BC2E7;
+            --dark-text: #2C3E50;
+            --gray-text: #64748B;
+            --light-bg: #F0FAFB;
+            --error-color: #EF4444;
+            --success-color: #10B981;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.8;
+            color: var(--dark-text);
+            background: #ffffff;
+        }
+
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .back-home {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .back-home:hover {
+            color: var(--secondary);
+            transform: translateX(-5px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 900;
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--gray-text);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info-section {
+            background: linear-gradient(135deg, var(--light-bg), white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(34, 168, 141, 0.1);
+        }
+
+        .contact-info-section h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            font-weight: 800;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: start;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+
+        .contact-method:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(34, 168, 141, 0.15);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .contact-details h3 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .contact-details p {
+            color: var(--gray-text);
+            margin: 0;
+        }
+
+        .contact-details a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-details a:hover {
+            text-decoration: underline;
+        }
+
+        .social-section {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            padding: 2rem;
+            border-radius: 15px;
+            color: white;
+            margin-top: 2rem;
+        }
+
+        .social-section h3 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .contact-form-section {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(34, 168, 141, 0.1);
+        }
+
+        .contact-form-section h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--dark-text);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .form-group label i {
+            color: var(--secondary);
+            margin-right: 0.5rem;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--light-bg);
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s;
+            color: var(--dark-text);
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(91, 194, 231, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: #94A3B8;
+        }
+
+        .error-message {
+            color: var(--error-color);
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .form-group.error .form-input,
+        .form-group.error .form-textarea {
+            border-color: var(--error-color);
+        }
+
+        .form-group.error .error-message {
+            display: block;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--secondary), #9DD14E);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 6px 20px rgba(141, 198, 63, 0.4);
+            width: 100%;
+            justify-content: center;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(141, 198, 63, 0.5);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .btn-spinner {
+            display: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .submit-btn.loading .btn-spinner {
+            display: inline-block;
+        }
+
+        .submit-btn.loading .btn-text {
+            display: none;
+        }
+
+        .success-message {
+            display: none;
+            background: #D1FAE5;
+            border-left: 4px solid var(--success-color);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 1.5rem;
+            color: #065F46;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .info-box {
+            background: var(--light-bg);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+
+        .info-box strong {
+            color: var(--primary);
+        }
+
+        footer {
+            background: #1a202c;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            margin: 0 1rem;
+        }
+
+        @media (max-width: 968px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Gigglers Academy">
+            </a>
+            <a href="index.html" class="back-home">
+                <i class="fas fa-arrow-left"></i>
+                Back to Home
+            </a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Contact Us</h1>
+        <p class="subtitle">We'd love to hear from you! Get in touch with any questions, feedback, or support needs.</p>
+
+        <div class="contact-grid">
+            <!-- Contact Information -->
+            <div class="contact-info-section">
+                <h2>Get In Touch</h2>
+
+                <div class="contact-method">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Email Us</h3>
+                        <p><a href="mailto:gigglersacademy@gmail.com">gigglersacademy@gmail.com</a></p>
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Response time: 48-72 hours</p>
+                    </div>
+                </div>
+
+                <div class="contact-method">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Business Hours</h3>
+                        <p>Monday - Saturday</p>
+                        <p>10:00 AM - 6:00 PM IST</p>
+                    </div>
+                </div>
+
+                <div class="contact-method">
+                    <div class="contact-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Website</h3>
+                        <p><a href="https://www.gigglersacademy.com" target="_blank" rel="noopener noreferrer">www.gigglersacademy.com</a></p>
+                    </div>
+                </div>
+
+                <div class="contact-method">
+                    <div class="contact-icon">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>YouTube Channel</h3>
+                        <p><a href="https://www.youtube.com/@GigglersAcademy" target="_blank" rel="noopener noreferrer">@GigglersAcademy</a></p>
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Subscribe for new content!</p>
+                    </div>
+                </div>
+
+                <div class="social-section">
+                    <h3><i class="fas fa-share-alt"></i> Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="https://www.youtube.com/@GigglersAcademy" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <strong><i class="fas fa-info-circle"></i> Quick Response Topics:</strong>
+                    <ul style="margin: 1rem 0 0 1.5rem; line-height: 1.8;">
+                        <li>Payment & donation queries</li>
+                        <li>Refund requests</li>
+                        <li>Technical issues</li>
+                        <li>Content feedback</li>
+                        <li>Partnership inquiries</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form-section">
+                <h2>Send Us a Message</h2>
+                <p style="color: var(--gray-text); margin-bottom: 2rem;">Fill out the form below and we'll get back to you as soon as possible.</p>
+
+                <!-- 
+                FORMSPREE SETUP INSTRUCTIONS:
+                1. Go to https://formspree.io/
+                2. Sign up for a free account (allows 50 submissions/month)
+                3. Create a new form
+                4. Copy your form endpoint URL
+                5. Replace "YOUR_FORMSPREE_ID" below with your actual endpoint ID
+                
+                Example: If your endpoint is https://formspree.io/f/xpznqrzy
+                Replace action="https://formspree.io/f/YOUR_FORMSPREE_ID" 
+                with action="https://formspree.io/f/xpznqrzy"
+                -->
+                
+                <form id="contactForm" action="https://formspree.io/f/mblqraje" method="POST">
+                    <div class="form-group" id="nameGroup">
+                        <label for="name">
+                            <i class="fas fa-user"></i>
+                            Your Name <span style="color: var(--error-color);">*</span>
+                        </label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name"
+                            class="form-input" 
+                            placeholder="Enter your full name"
+                            required
+                        >
+                        <span class="error-message">Please enter your name</span>
+                    </div>
+
+                    <div class="form-group" id="emailGroup">
+                        <label for="email">
+                            <i class="fas fa-envelope"></i>
+                            Email Address <span style="color: var(--error-color);">*</span>
+                        </label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email"
+                            class="form-input" 
+                            placeholder="your.email@example.com"
+                            required
+                        >
+                        <span class="error-message">Please enter a valid email address</span>
+                    </div>
+
+                    <div class="form-group" id="subjectGroup">
+                        <label for="subject">
+                            <i class="fas fa-tag"></i>
+                            Subject <span style="color: var(--error-color);">*</span>
+                        </label>
+                        <input 
+                            type="text" 
+                            id="subject" 
+                            name="subject"
+                            class="form-input" 
+                            placeholder="Brief subject of your message"
+                            required
+                        >
+                        <span class="error-message">Please enter a subject</span>
+                    </div>
+
+                    <div class="form-group" id="messageGroup">
+                        <label for="message">
+                            <i class="fas fa-comment-alt"></i>
+                            Message <span style="color: var(--error-color);">*</span>
+                        </label>
+                        <textarea 
+                            id="message" 
+                            name="message"
+                            class="form-textarea" 
+                            placeholder="Write your message here..."
+                            required
+                        ></textarea>
+                        <span class="error-message">Please enter your message</span>
+                    </div>
+
+                    <!-- Honeypot field for spam protection -->
+                    <input type="text" name="_gotcha" style="display:none">
+
+                    <!-- Formspree configuration -->
+                    <input type="hidden" name="_subject" value="New Contact Form Submission - Gigglers Academy">
+                    <input type="hidden" name="_cc" value="gigglersacademy@gmail.com">
+
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <span class="btn-spinner"></span>
+                        <i class="fas fa-paper-plane"></i>
+                        <span class="btn-text">Send Message</span>
+                    </button>
+
+                    <div class="success-message" id="successMessage">
+                        <strong><i class="fas fa-check-circle"></i> Message Sent Successfully!</strong>
+                        <p style="margin-top: 0.5rem;">Thank you for contacting us. We'll get back to you within 48-72 hours.</p>
+                    </div>
+                </form>
+
+                <div class="info-box" style="margin-top: 2rem;">
+                    <strong><i class="fas fa-shield-alt"></i> Privacy Notice:</strong>
+                    <p style="margin-top: 0.5rem; color: var(--gray-text);">
+                        Your information will be used only to respond to your inquiry and will not be shared with third parties. 
+                        See our <a href="privacy-policy.html" style="color: var(--accent);">Privacy Policy</a> for details.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Gigglers Academy. All rights reserved.</p>
+        <div>
+            <a href="index.html">Home</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms.html">Terms & Conditions</a>
+            <a href="refund-policy.html">Refund Policy</a>
+        </div>
+    </footer>
+
+    <script>
+        // Form validation and submission handling
+        const form = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const successMessage = document.getElementById('successMessage');
+
+        // Validate email format
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        // Validate individual field
+        function validateField(field) {
+            const formGroup = field.closest('.form-group');
+            const value = field.value.trim();
+
+            formGroup.classList.remove('error');
+
+            if (!value) {
+                formGroup.classList.add('error');
+                return false;
+            }
+
+            if (field.type === 'email' && !isValidEmail(value)) {
+                formGroup.classList.add('error');
+                return false;
+            }
+
+            return true;
+        }
+
+        // Add real-time validation
+        document.querySelectorAll('.form-input, .form-textarea').forEach(field => {
+            field.addEventListener('blur', () => validateField(field));
+            field.addEventListener('input', () => {
+                field.closest('.form-group').classList.remove('error');
+            });
+        });
+
+        // Handle form submission
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // Validate all fields
+            const fields = form.querySelectorAll('.form-input, .form-textarea');
+            let isValid = true;
+
+            fields.forEach(field => {
+                if (!validateField(field)) {
+                    isValid = false;
+                }
+            });
+
+            if (!isValid) {
+                const firstError = form.querySelector('.form-group.error .form-input, .form-group.error .form-textarea');
+                if (firstError) firstError.focus();
+                return;
+            }
+
+            // Show loading state
+            submitBtn.classList.add('loading');
+            submitBtn.disabled = true;
+            successMessage.classList.remove('show');
+
+            try {
+                // Submit form
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Success
+                    successMessage.classList.add('show');
+                    form.reset();
+                    
+                    // Scroll to success message
+                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                } else {
+                    // Error
+                    alert('There was a problem sending your message. Please try again or email us directly at gigglersacademy@gmail.com');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('There was a problem sending your message. Please try again or email us directly at gigglersacademy@gmail.com');
+            } finally {
+                // Remove loading state
+                submitBtn.classList.remove('loading');
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+
+</html>
