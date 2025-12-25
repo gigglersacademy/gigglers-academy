@@ -56,8 +56,8 @@
     <link rel="dns-prefetch" href="https://checkout.razorpay.com">
 
     <!-- Font Awesome - Updated to latest version -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" 
-        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Razorpay Checkout -->
@@ -77,9 +77,9 @@
       ]
     }
     </script>
-    
+
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7224271373444440"
-     crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
 
     <style>
         /* Modern CSS Reset */
@@ -111,7 +111,7 @@
             --medium-gray: #94A3B8;
             --error-color: #EF4444;
             --success-color: #10B981;
-            
+
             /* Shadows */
             --shadow-soft: 0 1px 3px rgba(34, 168, 141, 0.05);
             --shadow-sm: 0 2px 12px rgba(34, 168, 141, 0.08);
@@ -119,7 +119,7 @@
             --shadow-lg: 0 8px 40px rgba(34, 168, 141, 0.18);
             --shadow-xl: 0 20px 60px rgba(34, 168, 141, 0.25);
             --shadow-colored: 0 10px 40px rgba(91, 194, 231, 0.3);
-            
+
             /* Transitions */
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             --transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
@@ -292,7 +292,9 @@
         }
 
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         /* Scroll Progress Bar */
@@ -353,8 +355,15 @@
         }
 
         @keyframes pulse {
-            0%, 100% { box-shadow: var(--shadow-lg); }
-            50% { box-shadow: 0 8px 40px rgba(141, 198, 63, 0.6); }
+
+            0%,
+            100% {
+                box-shadow: var(--shadow-lg);
+            }
+
+            50% {
+                box-shadow: 0 8px 40px rgba(141, 198, 63, 0.6);
+            }
         }
 
         .support-button:hover {
@@ -460,9 +469,21 @@
         }
 
         @keyframes heartBeat {
-            0%, 100% { transform: scale(1); }
-            10%, 30% { transform: scale(0.9); }
-            20%, 40% { transform: scale(1.1); }
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            10%,
+            30% {
+                transform: scale(0.9);
+            }
+
+            20%,
+            40% {
+                transform: scale(1.1);
+            }
         }
 
         .modal-header h3 {
@@ -547,6 +568,7 @@
                 opacity: 0;
                 transform: translateY(-10px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -713,9 +735,11 @@
                 transform: scale(0);
                 opacity: 0;
             }
+
             50% {
                 transform: scale(1.2);
             }
+
             100% {
                 transform: scale(1);
                 opacity: 1;
@@ -744,6 +768,7 @@
                 transform: translate(0, 0) rotate(0deg);
                 opacity: 1;
             }
+
             100% {
                 transform: translate(var(--tx), var(--ty)) rotate(360deg);
                 opacity: 0;
@@ -795,6 +820,7 @@
                 transform: translateY(-100%);
                 opacity: 0;
             }
+
             to {
                 transform: translateY(0);
                 opacity: 1;
@@ -925,8 +951,13 @@
         }
 
         @keyframes moveBackground {
-            from { transform: translateX(0) translateY(0); }
-            to { transform: translateX(100px) translateY(100px); }
+            from {
+                transform: translateX(0) translateY(0);
+            }
+
+            to {
+                transform: translateX(100px) translateY(100px);
+            }
         }
 
         .hero-content {
@@ -942,6 +973,7 @@
                 opacity: 0;
                 transform: translateY(40px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -1079,8 +1111,15 @@
         }
 
         @keyframes pulseWidth {
-            0%, 100% { width: 100px; }
-            50% { width: 120px; }
+
+            0%,
+            100% {
+                width: 100px;
+            }
+
+            50% {
+                width: 120px;
+            }
         }
 
         /* Why Choose Us Section */
@@ -1487,8 +1526,15 @@
         }
 
         @keyframes gentlePulse {
-            0%, 100% { opacity: 0.92; }
-            50% { opacity: 1; }
+
+            0%,
+            100% {
+                opacity: 0.92;
+            }
+
+            50% {
+                opacity: 1;
+            }
         }
 
         /* Footer */
@@ -1656,6 +1702,7 @@
 
         /* Reduced Motion */
         @media (prefers-reduced-motion: reduce) {
+
             *,
             *::before,
             *::after {
@@ -1676,8 +1723,9 @@
                 <div>
                     <strong>We use cookies to improve your experience</strong>
                     <p style="margin: 0.3rem 0 0 0; font-size: 0.9rem;">
-                        By continuing to use our website, you accept our use of cookies. 
-                        <a href="privacy-policy.html" style="color: var(--accent); text-decoration: underline;">Learn more</a>
+                        By continuing to use our website, you accept our use of cookies.
+                        <a href="privacy-policy.html" style="color: var(--accent); text-decoration: underline;">Learn
+                            more</a>
                     </p>
                 </div>
             </div>
@@ -1706,7 +1754,8 @@
     </button>
 
     <!-- Support Button -->
-    <button class="floating-btn support-button" id="supportButton" aria-label="Support Us" title="Support Gigglers Academy">
+    <button class="floating-btn support-button" id="supportButton" aria-label="Support Us"
+        title="Support Gigglers Academy">
         <i class="fas fa-heart"></i>
     </button>
 
@@ -1729,17 +1778,8 @@
                     <label for="donationAmount">Enter Amount (₹)</label>
                     <div class="amount-input-wrapper">
                         <span class="currency-symbol">₹</span>
-                        <input 
-                            type="number" 
-                            id="donationAmount" 
-                            class="form-input amount-input" 
-                            value="100" 
-                            min="10"
-                            max="1000000"
-                            step="10"
-                            placeholder="100"
-                            required
-                        >
+                        <input type="number" id="donationAmount" class="form-input amount-input" value="100" min="10"
+                            max="1000000" step="10" placeholder="100" required>
                     </div>
                     <span class="error-message">Please enter an amount between ₹10 and ₹10,00,000</span>
                 </div>
@@ -1757,16 +1797,8 @@
                     <label for="userName">
                         <i class="fas fa-user"></i> Your Name
                     </label>
-                    <input 
-                        type="text" 
-                        id="userName" 
-                        class="form-input" 
-                        placeholder="Enter your name"
-                        required
-                        minlength="2"
-                        maxlength="100"
-                        pattern="[A-Za-z\s]+"
-                    >
+                    <input type="text" id="userName" class="form-input" placeholder="Enter your name" required
+                        minlength="2" maxlength="100" pattern="[A-Za-z\s]+">
                     <span class="error-message">Please enter a valid name (2-100 characters)</span>
                 </div>
 
@@ -1774,29 +1806,23 @@
                     <label for="userEmail">
                         <i class="fas fa-envelope"></i> Email Address
                     </label>
-                    <input 
-                        type="email" 
-                        id="userEmail" 
-                        class="form-input" 
-                        placeholder="Enter your email"
-                        required
-                    >
+                    <input type="email" id="userEmail" class="form-input" placeholder="Enter your email" required>
                     <span class="error-message">Please enter a valid email address</span>
                 </div>
 
                 <!-- Terms Acceptance -->
                 <div class="form-group" id="termsGroup" style="margin-top: 1.5rem;">
-                    <label style="display: flex; align-items: start; gap: 10px; font-size: 0.9rem; font-weight: 500; cursor: pointer;">
-                        <input 
-                            type="checkbox" 
-                            id="termsConsent" 
-                            required
-                            style="margin-top: 4px; width: 18px; height: 18px; cursor: pointer; flex-shrink: 0;"
-                        >
+                    <label
+                        style="display: flex; align-items: start; gap: 10px; font-size: 0.9rem; font-weight: 500; cursor: pointer;">
+                        <input type="checkbox" id="termsConsent" required
+                            style="margin-top: 4px; width: 18px; height: 18px; cursor: pointer; flex-shrink: 0;">
                         <span style="color: var(--dark-text);">
-                            I agree to the <a href="terms.html" target="_blank" style="color: var(--accent); text-decoration: underline;">Terms & Conditions</a> 
-                            and <a href="privacy-policy.html" target="_blank" style="color: var(--accent); text-decoration: underline;">Privacy Policy</a>. 
-                            I understand that donations are <strong style="color: var(--primary);">non-refundable</strong> and 
+                            I agree to the <a href="terms.html" target="_blank"
+                                style="color: var(--accent); text-decoration: underline;">Terms & Conditions</a>
+                            and <a href="privacy-policy.html" target="_blank"
+                                style="color: var(--accent); text-decoration: underline;">Privacy Policy</a>.
+                            I understand that donations are <strong
+                                style="color: var(--primary);">non-refundable</strong> and
                             <strong style="color: var(--primary);">not eligible for tax deductions</strong>.
                         </span>
                     </label>
@@ -1804,10 +1830,12 @@
                 </div>
 
                 <!-- Payment Disclaimer -->
-                <div style="background: var(--light-bg); padding: 1rem; border-radius: 10px; margin: 1.5rem 0; border-left: 3px solid var(--secondary);">
+                <div
+                    style="background: var(--light-bg); padding: 1rem; border-radius: 10px; margin: 1.5rem 0; border-left: 3px solid var(--secondary);">
                     <p style="font-size: 0.85rem; color: var(--gray-text); margin: 0; line-height: 1.6;">
-                        <i class="fas fa-info-circle" style="color: var(--secondary);"></i> 
-                        By proceeding, you confirm this is a <strong>voluntary donation</strong> to support educational content creation. 
+                        <i class="fas fa-info-circle" style="color: var(--secondary);"></i>
+                        By proceeding, you confirm this is a <strong>voluntary donation</strong> to support educational
+                        content creation.
                         Payments are processed securely via Razorpay.
                     </p>
                 </div>
@@ -1842,7 +1870,8 @@
             <h3>Thank You for Your Support! 🎉</h3>
             <div class="success-amount" id="successAmount">₹100</div>
             <p class="success-message">
-                Your generous contribution helps us continue creating magical learning experiences for children around the world. Together, we're making education fun and accessible! 
+                Your generous contribution helps us continue creating magical learning experiences for children around
+                the world. Together, we're making education fun and accessible!
             </p>
             <div class="payment-id" id="paymentId">Payment ID: rzp_xxxxxxxxxxxxx</div>
             <div class="modal-footer">
@@ -2174,7 +2203,7 @@
                     <a href="https://www.youtube.com/@GigglersAcademy?sub_confirmation=1" target="_blank"
                         rel="noopener noreferrer">Subscribe Now</a>
                     <p style="margin-top: 1rem; font-size: 0.9rem;">
-                        <i class="fas fa-envelope"></i> 
+                        <i class="fas fa-envelope"></i>
                         <a href="mailto:gigglersacademy@gmail.com">gigglersacademy@gmail.com</a>
                     </p>
                 </div>
@@ -2222,9 +2251,9 @@
             // Validate amount
             isValidAmount(amount) {
                 const numAmount = parseFloat(amount);
-                return !isNaN(numAmount) && 
-                       numAmount >= CONFIG.MIN_AMOUNT && 
-                       numAmount <= CONFIG.MAX_AMOUNT;
+                return !isNaN(numAmount) &&
+                    numAmount >= CONFIG.MIN_AMOUNT &&
+                    numAmount <= CONFIG.MAX_AMOUNT;
             },
 
             // Format currency
@@ -2339,16 +2368,16 @@
                     const confetti = document.createElement('div');
                     confetti.className = 'confetti-piece';
                     confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-                    
+
                     const angle = (Math.PI * 2 * i) / CONFIG.CONFETTI_COUNT;
                     const distance = 80 + Math.random() * 40;
                     const tx = Math.cos(angle) * distance;
                     const ty = Math.sin(angle) * distance;
-                    
+
                     confetti.style.setProperty('--tx', `${tx}px`);
                     confetti.style.setProperty('--ty', `${ty}px`);
                     confetti.style.animationDelay = `${Math.random() * 0.3}s`;
-                    
+
                     container.appendChild(confetti);
                 }
             }
@@ -2403,13 +2432,13 @@
 
             handleSuccess(response, amount) {
                 console.log('Payment successful:', response);
-                
+
                 ModalManager.close('paymentModal');
-                
+
                 // Update success modal
                 document.getElementById('successAmount').textContent = Utils.formatCurrency(amount);
                 document.getElementById('paymentId').textContent = `Payment ID: ${response.razorpay_payment_id}`;
-                
+
                 // Show success modal
                 setTimeout(() => {
                     ModalManager.open('successModal');
@@ -2434,13 +2463,13 @@
             // Modals
             paymentModal: document.getElementById('paymentModal'),
             successModal: document.getElementById('successModal'),
-            
+
             // Form elements
             paymentForm: document.getElementById('paymentForm'),
             donationAmount: document.getElementById('donationAmount'),
             userName: document.getElementById('userName'),
             userEmail: document.getElementById('userEmail'),
-            
+
             // Buttons
             supportButton: document.getElementById('supportButton'),
             closePaymentModal: document.getElementById('closePaymentModal'),
@@ -2449,7 +2478,7 @@
             proceedPayment: document.getElementById('proceedPayment'),
             closeSuccess: document.getElementById('closeSuccess'),
             quickAmountBtns: document.querySelectorAll('.quick-amount-btn'),
-            
+
             // UI elements
             loadingScreen: document.getElementById('loadingScreen'),
             scrollProgress: document.getElementById('scrollProgress'),
@@ -2461,13 +2490,13 @@
         // ==================== QUICK AMOUNT SELECTION ====================
         function setupQuickAmounts() {
             elements.quickAmountBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
+                btn.addEventListener('click', function () {
                     elements.quickAmountBtns.forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
-                    
+
                     const amount = this.getAttribute('data-amount');
                     elements.donationAmount.value = amount;
-                    
+
                     // Clear any validation errors
                     FormValidator.clearValidation(elements.donationAmount.closest('.form-group'));
                 });
@@ -2476,15 +2505,15 @@
 
         // ==================== AMOUNT INPUT HANDLER ====================
         function setupAmountInput() {
-            elements.donationAmount.addEventListener('input', function() {
+            elements.donationAmount.addEventListener('input', function () {
                 const amount = parseInt(this.value);
-                
+
                 // Update quick amount buttons
                 elements.quickAmountBtns.forEach(btn => {
                     const btnAmount = parseInt(btn.getAttribute('data-amount'));
                     btn.classList.toggle('active', btnAmount === amount);
                 });
-                
+
                 // Clear validation on input
                 if (this.value) {
                     FormValidator.clearValidation(this.closest('.form-group'));
@@ -2492,7 +2521,7 @@
             });
 
             // Validate on blur
-            elements.donationAmount.addEventListener('blur', function() {
+            elements.donationAmount.addEventListener('blur', function () {
                 if (this.value) {
                     FormValidator.validateAmount(this);
                 }
@@ -2502,13 +2531,13 @@
         // ==================== FORM VALIDATION SETUP ====================
         function setupFormValidation() {
             // Real-time validation
-            elements.userName.addEventListener('blur', function() {
+            elements.userName.addEventListener('blur', function () {
                 if (this.value) {
                     FormValidator.validateName(this);
                 }
             });
 
-            elements.userEmail.addEventListener('blur', function() {
+            elements.userEmail.addEventListener('blur', function () {
                 if (this.value) {
                     FormValidator.validateEmail(this);
                 }
@@ -2516,7 +2545,7 @@
 
             // Clear validation on input
             [elements.userName, elements.userEmail].forEach(field => {
-                field.addEventListener('input', function() {
+                field.addEventListener('input', function () {
                     FormValidator.clearValidation(this.closest('.form-group'));
                 });
             });
@@ -2524,7 +2553,7 @@
 
         // ==================== FORM SUBMISSION ====================
         function setupFormSubmission() {
-            elements.paymentForm.addEventListener('submit', function(e) {
+            elements.paymentForm.addEventListener('submit', function (e) {
                 e.preventDefault();
 
                 // Validate all fields
@@ -2594,7 +2623,7 @@
 
             // Close modals when clicking overlay
             [elements.paymentModal, elements.successModal].forEach(modal => {
-                modal.addEventListener('click', function(e) {
+                modal.addEventListener('click', function (e) {
                     if (e.target === this) {
                         ModalManager.close(this.id);
                     }
@@ -2602,7 +2631,7 @@
             });
 
             // ESC key to close modals
-            document.addEventListener('keydown', function(e) {
+            document.addEventListener('keydown', function (e) {
                 if (e.key === 'Escape') {
                     ModalManager.closeAll();
                 }
@@ -2612,14 +2641,14 @@
         // ==================== UI FEATURES ====================
         function setupUIFeatures() {
             // Loading screen
-            window.addEventListener('load', function() {
+            window.addEventListener('load', function () {
                 setTimeout(() => {
                     elements.loadingScreen.classList.add('hidden');
                 }, CONFIG.LOADING_DELAY);
             });
 
             // Scroll progress bar
-            window.addEventListener('scroll', function() {
+            window.addEventListener('scroll', function () {
                 const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
                 const scrolled = (window.scrollY / scrollHeight) * 100;
                 elements.scrollProgress.style.width = Math.min(scrolled, 100) + '%';
@@ -2634,7 +2663,7 @@
             });
 
             // Hamburger menu
-            elements.hamburger.addEventListener('click', function() {
+            elements.hamburger.addEventListener('click', function () {
                 const isOpen = elements.navLinks.classList.toggle('active');
                 this.classList.toggle('active');
                 this.setAttribute('aria-expanded', isOpen);
@@ -2652,9 +2681,9 @@
             });
 
             // Close mobile menu on outside click
-            document.addEventListener('click', function(e) {
-                if (!elements.navLinks.contains(e.target) && 
-                    !elements.hamburger.contains(e.target) && 
+            document.addEventListener('click', function (e) {
+                if (!elements.navLinks.contains(e.target) &&
+                    !elements.hamburger.contains(e.target) &&
                     elements.navLinks.classList.contains('active')) {
                     elements.navLinks.classList.remove('active');
                     elements.hamburger.classList.remove('active');
@@ -2665,7 +2694,7 @@
 
             // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
+                anchor.addEventListener('click', function (e) {
                     e.preventDefault();
                     const target = document.querySelector(this.getAttribute('href'));
                     if (target) {
@@ -2692,7 +2721,7 @@
                 setupModalListeners();
                 setupUIFeatures();
                 initCookieConsent();
-                
+
                 console.log('Gigglers Academy website initialized successfully');
             } catch (error) {
                 console.error('Initialization error:', error);
@@ -2722,7 +2751,7 @@
         function acceptCookies() {
             localStorage.setItem('cookieConsent', 'accepted');
             document.getElementById('cookieConsent').classList.remove('show');
-            
+
             // Initialize analytics here if needed
             // Example: initGoogleAnalytics();
         }
