@@ -521,7 +521,15 @@ function initCookieConsent() {
     const cookieConsent = document.getElementById('cookieConsent');
     const consent = localStorage.getItem('cookieConsent');
 
-    if (!consent) {
+    if (consent === 'accepted') {
+        // Update Google Consent Mode
+        gtag('consent', 'update', {
+            'ad_storage': 'granted',
+            'ad_user_data': 'granted',
+            'ad_personalization': 'granted',
+            'analytics_storage': 'granted'
+        });
+    } else if (!consent) {
         // Show banner after 1 second
         setTimeout(() => {
             cookieConsent.classList.add('show');
@@ -533,11 +541,18 @@ function acceptCookies() {
     localStorage.setItem('cookieConsent', 'accepted');
     document.getElementById('cookieConsent').classList.remove('show');
 
-    // Initialize analytics here if needed
-    // Example: initGoogleAnalytics();
+    // Update Google Consent Mode
+    gtag('consent', 'update', {
+        'ad_storage': 'granted',
+        'ad_user_data': 'granted',
+        'ad_personalization': 'granted',
+        'analytics_storage': 'granted'
+    });
 }
 
 function declineCookies() {
     localStorage.setItem('cookieConsent', 'declined');
     document.getElementById('cookieConsent').classList.remove('show');
+
+    // Consent remains denied (default)
 }
